@@ -1,13 +1,15 @@
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
-    <title>象棋小巫师</title>
-    <script type="text/javascript" src="book.js"></script>
-    <script type="text/javascript" src="position.js"></script>
-    <script type="text/javascript" src="search.js"></script>
-    <script type="text/javascript" src="board.js"></script>
-    <script type="text/javascript" src="cchess.js"></script>
-    <style type="text/css"><!--
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk">
+<title>Chinese Chess</title>
+
+<script type="text/javascript" src="book.js"></script>
+<script type="text/javascript" src="position.js"></script>
+<script type="text/javascript" src="search.js"></script>
+<script type="text/javascript" src="board.js"></script>
+<script type="text/javascript" src="cchess.js"></script>
+
+<style type="text/css"><!--
 body {
   background: url(../background.gif);
 }
@@ -18,13 +20,13 @@ span.td {
 
 div.label {
   font-size: 14px;
-  padding:2px;
+  padding: 2px;
 }
 
 select {
   font-size: 14px;
   width: 108px;
-  padding:2px;
+  padding: 2px;
 }
 
 option {
@@ -39,49 +41,92 @@ input.button {
 label {
   font-size: 14px;
 }
+--></style>
+</head>
 
-    --></style>
-  </head>
-  <body>
-    <div style="text-align:center;font-size:28px;font-family:黑体">象棋小巫师</div>
-    <div style="height:16px"></div>
-    <div style="text-align:center;white-space:nowrap">
-      <span class="td" style="margin-right:10px">
-        <div id="container"></div>
-      </span><span class="td" style="vertical-align:top;width:120px;"><div style="text-align:left">
-        <div class="label">谁先走</div>
-        <div><select id="selMoveMode" size="3">
-          <option selected value="0">我先走</option>
-          <option value="1">电脑先走</option>
-          <option value="2">不用电脑</option>
-        </select></div>
-        <div class="label">先走让子</div>
-        <div><select id="selHandicap" style="padding:0px">
-          <option selected value="0">不让子</option>
-          <option value="1">让左马</option>
-          <option value="2">让双马</option>
-          <option value="3">让九子</option>
-        </select></div>
-        <div style="padding-top:2px"><input type="button" class="button" value="重新开始" onclick="restart_click()"></div>
-        <div style="padding-top:2px"><input type="button" class="button" value="悔棋" onclick="retract_click()"></div>
-        <div style="height:12px"></div>
-        <div class="label">电脑水平</div>
-        <div><select id="selLevel" size="3" onchange="level_change()">
-          <option selected value="0">入门</option>
-          <option value="1">业余</option>
-          <option value="2">专业</option>
-        </select></div>
-        <div style="height:12px"></div>
-        <div><input type="checkbox" class="checkbox" id="chkAnimated" checked onclick="board.animated = checked"><label for="chkAnimated">动画</label></input></div>
-        <div><input type="checkbox" class="checkbox" checked onclick="board.setSound(checked)"><label for="chkSound">音效</label></input></div>
-        <div style="height:60px"></div>
-        <div class="label">步骤</div>
-        <div><select id="selMoveList" size="10" style="font-family:宋体" onchange="moveList_change()">
-          <option selected value="0">=== 开始 ===</option>
-        </select></div>
-      </div></span>
-    </div>
-    <script type="text/javascript"><!--
+<body>
+
+<div style="text-align:center;font-size:28px;font-family:Arial,sans-serif">
+  Chinese Chess
+</div>
+
+<div style="height:16px"></div>
+
+<div style="text-align:center;white-space:nowrap">
+
+<span class="td" style="margin-right:10px">
+  <div id="container"></div>
+</span><span class="td" style="vertical-align:top;width:120px;"><div style="text-align:left">
+
+<div class="label">First move</div>
+<div>
+  <select id="selMoveMode" size="3">
+    <option selected value="0">You first</option>
+    <option value="1">Computer first</option>
+    <option value="2">2 players</option>
+  </select>
+</div>
+
+<div class="label">Handicap</div>
+<div>
+  <select id="selHandicap" style="padding:0px">
+    <option selected value="0">None</option>
+    <option value="1">Left knight</option>
+    <option value="2">Both knights</option>
+    <option value="3">Nine pieces</option>
+  </select>
+</div>
+
+<div style="padding-top:2px">
+  <input type="button" class="button" value="New Game" onclick="restart_click()">
+</div>
+
+<div style="padding-top:2px">
+  <input type="button" class="button" value="Undo" onclick="retract_click()">
+</div>
+
+<div style="height:12px"></div>
+
+<div class="label">AI level</div>
+<div>
+  <select id="selLevel" size="3" onchange="level_change()">
+    <option selected value="0">Easy</option>
+    <option value="1">Medium</option>
+    <option value="2">Hard</option>
+  </select>
+</div>
+
+<div style="height:12px"></div>
+
+<div>
+  <input type="checkbox" class="checkbox" id="chkAnimated" checked
+         onclick="board.animated = checked">
+  <label for="chkAnimated">Animation</label>
+</div>
+
+<div>
+  <input type="checkbox" class="checkbox" id="chkSound" checked
+         onclick="board.setSound(checked)">
+  <label for="chkSound">Sound</label>
+</div>
+
+<div style="height:60px"></div>
+
+<div class="label">Moves</div>
+
+<div>
+  <select id="selMoveList" size="10"
+          style="font-family:Arial,sans-serif"
+          onchange="moveList_change()">
+    <option selected value="0">=== Start ===</option>
+  </select>
+</div>
+
+</div></span>
+</div>
+
+<script type="text/javascript"><!--
+
 "use strict";
 
 var STARTUP_FEN = [
@@ -107,9 +152,10 @@ var board = new Board(container, "images/", "sounds/");
 board.setSearch(16);
 board.millis = 10;
 board.computer = 1;
+
 board.onAddMove = function() {
   var counter = (board.pos.mvList.length >> 1);
-  var space = (counter > 99 ? "    " : "   ");
+  var space = (counter > 99 ? " " : " ");
   counter = (counter > 9 ? "" : " ") + counter + ".";
   var text = (board.pos.sdPlayer == 0 ? space : counter) + move2Iccs(board.mvLast);
   var value = "" + board.mvLast;
@@ -146,11 +192,14 @@ function moveList_change() {
     selMoveList.selectedIndex = selMoveList.options.length - 1;
     return;
   }
+
   var from = board.pos.mvList.length;
   var to = selMoveList.selectedIndex;
+
   if (from == to + 1) {
     return;
   }
+
   if (from > to + 1) {
     for (var i = to + 1; i < from; i ++) {
       board.pos.undoMakeMove();
@@ -160,8 +209,30 @@ function moveList_change() {
       board.pos.makeMove(parseInt(selMoveList.options[i].value));
     }
   }
+
   board.flushBoard();
 }
-    --></script>
-  </body>
+
+/*
+ * The original board.js contains Chinese game-over messages.
+ * Override the global alert helper here so every result shown to the user
+ * is English without needing to modify board.js.
+ */
+alertDelay = function(message) {
+  setTimeout(function() {
+    if (board.result == RESULT_WIN) {
+      alert("You win!");
+    } else if (board.result == RESULT_LOSS) {
+      alert("You lose.");
+    } else if (board.result == RESULT_DRAW) {
+      alert("Draw.");
+    } else {
+      alert("Game over.");
+    }
+  }, 250);
+};
+
+//--></script>
+
+</body>
 </html>
