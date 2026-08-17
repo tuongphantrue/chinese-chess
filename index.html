@@ -1,53 +1,11 @@
-Done. I made a **single replacement file** so you don’t have to edit many files.
-
-[Download the English `index.htm`](sandbox:/mnt/data/index.htm)
-
-On GitHub:
-
-1. Open your repo → `JavaScript` folder.
-2. Click **Add file → Upload files**.
-3. Upload the downloaded `index.htm`.
-4. GitHub should detect that it replaces the existing `JavaScript/index.htm`.
-5. Click **Commit changes**.
-
-Your current game loads its chess engine from `book.js`, `position.js`, `search.js`, `board.js`, and `cchess.js`, so this replacement keeps those files unchanged. ([GitHub][1])
-
-I changed the interface to English:
-
-```text
-Chinese Chess
-First move
-  You first
-  Computer first
-  2 players
-
-Handicap
-  None
-  Left knight
-  Both knights
-  Nine pieces
-
-New Game
-Undo
-
-AI level
-  Easy
-  Medium
-  Hard
-
-Animation
-Sound
-
-Moves
-```
-
-I also made this file override the Chinese game-over messages, so you should see simple English messages such as **“You win!”**, **“You lose.”**, and **“Draw.”** without having to replace `board.js`. The original game sets win/loss/draw states before displaying those messages, so the replacement can use those existing states. ([GitHub][2])
-
-After committing, refresh:
-
-`https://tuongphantrue.github.io/chinese-chess/`
-
-You only need to upload **this one file**.
-
-[1]: https://github.com/tuongphantrue/chinese-chess/blob/master/JavaScript/index.htm "chinese-chess/JavaScript/index.htm at master · tuongphantrue/chinese-chess · GitHub"
-[2]: https://github.com/tuongphantrue/chinese-chess/blob/master/JavaScript/board.js "chinese-chess/JavaScript/board.js at master · tuongphantrue/chinese-chess · GitHub"
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=JavaScript/index.htm">
+  <title>Chinese Chess</title>
+</head>
+<body>
+  <p><a href="JavaScript/index.htm">Open Chinese Chess</a></p>
+</body>
+</html>
